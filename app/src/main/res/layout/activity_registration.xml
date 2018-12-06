@@ -21,6 +21,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Registration_textView">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/nickNameEditText"
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:background="@drawable/border_style"
@@ -41,6 +42,7 @@
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border_style"
@@ -63,6 +65,7 @@
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/confirmPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border_style"
@@ -84,6 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nicknameRegistration">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:background="@drawable/border_style"
@@ -91,19 +95,9 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <CheckBox
-        android:id="@+id/checkBox_PrivacyPolicy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="I agree to the general terms and conditions and the privacy policy"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="@+id/confirm_passwordRegistration"
-        app:layout_constraintTop_toBottomOf="@+id/confirm_passwordRegistration" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/registrationButton"
         android:layout_width="113dp"
         android:layout_height="34dp"
         android:layout_marginBottom="8dp"
@@ -116,8 +110,7 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_PrivacyPolicy" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/Registration_textView"
