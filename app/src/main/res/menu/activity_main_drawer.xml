@@ -3,38 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-   <!-- <group android:checkableBehavior="single"> -->
-        <item
-            android:id="@+id/nav_profile"
-            android:icon="@drawable/profile"
-            android:title="User details" />
-  <!--  </group> -->
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/profile"
+        android:title="User details" />
 
-    <item android:title="General">
-        <menu>
-            <item
-                android:id="@+id/nav_languages"
-                android:icon="@drawable/languages"
-                android:title="Languages" />
-            <item
-                android:id="@+id/nav_currency"
-                android:icon="@drawable/currency"
-                android:title="Currency" />
-            <item
-                android:id="@+id/nav_period"
-                android:icon="@drawable/period"
-                android:title="Period"/>
-        </menu>
-    </item>
+    <item
+        android:id="@+id/nav_languages"
+        android:icon="@drawable/languages"
+        android:title="Languages" />
+    <item
+        android:id="@+id/nav_currency"
+        android:icon="@drawable/currency"
+        android:title="Currency" />
+    <item
+        android:id="@+id/nav_period"
+        android:icon="@drawable/period"
+        android:title="Period"/>
 
     <item
         android:id="@+id/nav_transaction"
         android:icon="@drawable/transaction"
         android:title="Transactions" />
+
     <item
         android:id="@+id/nav_summary"
         android:icon="@drawable/summary"
         android:title="Summary" />
+
     <item
         android:id="@+id/nav_logout"
         android:icon="@drawable/logout"

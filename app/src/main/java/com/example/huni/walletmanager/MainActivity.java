@@ -2,6 +2,8 @@ package com.example.huni.walletmanager;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,8 +12,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.huni.walletmanager.Fragments.CurrencyFragment;
+import com.example.huni.walletmanager.Fragments.LanguagesFragment;
+import com.example.huni.walletmanager.Fragments.LogoutFragment;
+import com.example.huni.walletmanager.Fragments.PeriodFragment;
+import com.example.huni.walletmanager.Fragments.ProfileFragment;
+import com.example.huni.walletmanager.Fragments.SummaryFragment;
+import com.example.huni.walletmanager.Fragments.TransactionFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,16 +31,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        /*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.nav_logout) {
             return true;
         }
 
@@ -78,24 +80,112 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_profile) {
-            // Handle the camera action
-        } else if (id == R.id.nav_transaction) {
+        switch(id) {
 
-        } else if (id == R.id.nav_summary) {
+            case R.id.nav_profile: {
 
-        } else if (id == R.id.nav_logout) {
+                fragment = getSupportFragmentManager().findFragmentByTag("ProfileFragment");
+
+                if(fragment == null) {
+
+                    fragment = new ProfileFragment();
+                }
+
+                loadFragment(fragment);
+                return true;
+            }
+
+            case R.id.nav_languages:
+                {
+
+                fragment = getSupportFragmentManager().findFragmentByTag("LanguagesFragment");
+
+                if(fragment == null) {
+
+                    fragment = new LanguagesFragment();
+                }
+
+                loadFragment(fragment);
+                break;
+            }
+
+            case R.id.nav_currency: {
+
+                fragment = getSupportFragmentManager().findFragmentByTag("CurrencyFragment");
+
+                if(fragment == null) {
+
+                    fragment = new CurrencyFragment();
+                }
+
+                loadFragment(fragment);
+                break;
+            }
+
+            case R.id.nav_period: {
+
+                fragment = getSupportFragmentManager().findFragmentByTag("PeriodFragment");
+
+                if(fragment == null) {
+
+                    fragment = new PeriodFragment();
+                }
+
+                loadFragment(fragment);
+                break;
+            }
 
 
+            case R.id.nav_transaction: {
 
-        } else if (id == R.id.nav_languages) {
+                fragment = getSupportFragmentManager().findFragmentByTag("TransactionFragment");
 
-        } else if (id == R.id.nav_currency) {
+                if(fragment == null) {
+
+                    fragment = new TransactionFragment();
+                }
+
+                loadFragment(fragment);
+                break;
+            }
+
+            case R.id.nav_summary: {
+
+                fragment = getSupportFragmentManager().findFragmentByTag("SummaryFragment");
+
+                if(fragment == null) {
+
+                    fragment = new SummaryFragment();
+                }
+
+                loadFragment(fragment);
+                return true;
+            }
+
+            case R.id.nav_logout: {
+
+                fragment = getSupportFragmentManager().findFragmentByTag("LogoutFragment");
+
+                if(fragment == null) {
+
+                    fragment = new LogoutFragment();
+                }
+
+                loadFragment(fragment);
+                break;
+            }
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void loadFragment(Fragment fragment) {
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_main, fragment, fragment.getClass().getSimpleName());
+        ft.commit();
     }
 }
