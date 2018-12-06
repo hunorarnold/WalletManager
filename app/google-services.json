@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "942360405730",
+    "firebase_url": "https://newregistration-67471.firebaseio.com",
+    "project_id": "newregistration-67471",
+    "storage_bucket": "newregistration-67471.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942360405730:android:ae2c1cfaf5ab51cc",
+        "android_client_info": {
+          "package_name": "com.example.huni.walletmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942360405730-s9m9vi9tu95gqcr1agi60nioo9s58jr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxQ3xK6tq2SGxE8L3xL8Beu2a403am6zw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
