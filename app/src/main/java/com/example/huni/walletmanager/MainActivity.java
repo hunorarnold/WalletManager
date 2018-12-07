@@ -1,5 +1,6 @@
 package com.example.huni.walletmanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,10 +13,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.huni.walletmanager.Activities.transactionActivity;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Fragment fragment;
+    private Intent transactionIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        transactionIntent = new Intent(MainActivity.this, transactionActivity.class);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -81,6 +86,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_period) {
 
         } else if (id == R.id.nav_transaction) {
+
+            startActivity(transactionIntent);
 
         } else if (id == R.id.nav_summary) {
 
