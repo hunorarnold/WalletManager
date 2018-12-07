@@ -13,7 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.huni.walletmanager.Activities.transactionActivity;
+import com.example.huni.walletmanager.NavigationDrawerActivities.transactionActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

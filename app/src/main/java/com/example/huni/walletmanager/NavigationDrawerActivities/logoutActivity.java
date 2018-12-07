@@ -1,4 +1,4 @@
-package com.example.huni.walletmanager.Activities;
+package com.example.huni.walletmanager.NavigationDrawerActivities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
