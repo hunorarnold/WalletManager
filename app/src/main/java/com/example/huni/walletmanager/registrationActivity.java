@@ -1,6 +1,7 @@
 package com.example.huni.walletmanager;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.media.SoundPool;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
@@ -30,13 +31,14 @@ public class registrationActivity extends AppCompatActivity implements View.OnCl
     //private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
 
+    private Intent backToLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-
+        backToLogin = new Intent(registrationActivity.this, loginActivity.class);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -92,11 +94,18 @@ public class registrationActivity extends AppCompatActivity implements View.OnCl
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(registrationActivity.this, "Registered succesfull!",Toast.LENGTH_LONG).show();
+                            try {
+                                Thread.sleep(1500);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            startActivity(backToLogin);
                         } else {
                             Toast.makeText(registrationActivity.this, "Registration fail!",Toast.LENGTH_LONG).show();
                         }
                     }
                 });
+
     }
 
     @Override
