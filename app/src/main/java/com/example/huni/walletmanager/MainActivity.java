@@ -12,14 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.huni.walletmanager.Fragments.CurrencyFragment;
-import com.example.huni.walletmanager.Fragments.LanguagesFragment;
-import com.example.huni.walletmanager.Fragments.LogoutFragment;
-import com.example.huni.walletmanager.Fragments.PeriodFragment;
-import com.example.huni.walletmanager.Fragments.ProfileFragment;
-import com.example.huni.walletmanager.Fragments.SummaryFragment;
-import com.example.huni.walletmanager.Fragments.TransactionFragment;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -80,102 +72,22 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        switch(id) {
+        if (id == R.id.nav_profile) {
+            // Handle the camera action
+        } else if (id == R.id.nav_languages) {
 
-            case R.id.nav_profile: {
+        } else if (id == R.id.nav_currency) {
 
-                fragment = getSupportFragmentManager().findFragmentByTag("ProfileFragment");
+        } else if (id == R.id.nav_period) {
 
-                if(fragment == null) {
+        } else if (id == R.id.nav_transaction) {
 
-                    fragment = new ProfileFragment();
-                }
+        } else if (id == R.id.nav_summary) {
 
-                loadFragment(fragment);
-                return true;
-            }
-
-            case R.id.nav_languages:
-                {
-
-                fragment = getSupportFragmentManager().findFragmentByTag("LanguagesFragment");
-
-                if(fragment == null) {
-
-                    fragment = new LanguagesFragment();
-                }
-
-                loadFragment(fragment);
-                break;
-            }
-
-            case R.id.nav_currency: {
-
-                fragment = getSupportFragmentManager().findFragmentByTag("CurrencyFragment");
-
-                if(fragment == null) {
-
-                    fragment = new CurrencyFragment();
-                }
-
-                loadFragment(fragment);
-                break;
-            }
-
-            case R.id.nav_period: {
-
-                fragment = getSupportFragmentManager().findFragmentByTag("PeriodFragment");
-
-                if(fragment == null) {
-
-                    fragment = new PeriodFragment();
-                }
-
-                loadFragment(fragment);
-                break;
-            }
-
-
-            case R.id.nav_transaction: {
-
-                fragment = getSupportFragmentManager().findFragmentByTag("TransactionFragment");
-
-                if(fragment == null) {
-
-                    fragment = new TransactionFragment();
-                }
-
-                loadFragment(fragment);
-                break;
-            }
-
-            case R.id.nav_summary: {
-
-                fragment = getSupportFragmentManager().findFragmentByTag("SummaryFragment");
-
-                if(fragment == null) {
-
-                    fragment = new SummaryFragment();
-                }
-
-                loadFragment(fragment);
-                return true;
-            }
-
-            case R.id.nav_logout: {
-
-                fragment = getSupportFragmentManager().findFragmentByTag("LogoutFragment");
-
-                if(fragment == null) {
-
-                    fragment = new LogoutFragment();
-                }
-
-                loadFragment(fragment);
-                break;
-            }
+        } else if (id == R.id.nav_logout) {
 
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
