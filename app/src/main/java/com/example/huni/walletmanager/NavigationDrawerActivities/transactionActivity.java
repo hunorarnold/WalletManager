@@ -36,13 +36,15 @@ public class transactionActivity extends AppCompatActivity {
         pieChart = findViewById(R.id.idPieChart);
 
         pieChart.setDescription(null);
-        //pieChart.setUsePercentValues(true);
+        pieChart.setUsePercentValues(true);
         pieChart.setRotationEnabled(true);
         pieChart.setHoleRadius(20f);
         pieChart.setTransparentCircleAlpha(0);
         pieChart.setCenterText("Monthly");
         pieChart.setCenterTextSize(10);
         pieChart.setDrawEntryLabels(true);
+
+
 
         addDataSet();
 
@@ -66,7 +68,7 @@ public class transactionActivity extends AppCompatActivity {
                     }
                 }
 
-                String spending = xData[positionOne + 1];
+                String spending = xData[positionOne];
                 Toast.makeText(transactionActivity.this, spending + ": " + money + "$", Toast.LENGTH_LONG).show();
             }
 
