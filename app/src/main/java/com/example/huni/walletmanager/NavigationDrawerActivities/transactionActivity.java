@@ -38,9 +38,9 @@ public class transactionActivity extends AppCompatActivity {
         pieChart.setDescription(null);
         pieChart.setUsePercentValues(true);
         pieChart.setRotationEnabled(true);
-        pieChart.setHoleRadius(20f);
+        pieChart.setHoleRadius(15f);
         pieChart.setTransparentCircleAlpha(0);
-        pieChart.setCenterText("Monthly");
+        pieChart.setCenterText("Monthly expenses");
         pieChart.setCenterTextSize(10);
         pieChart.setDrawEntryLabels(true);
 
@@ -102,13 +102,13 @@ public class transactionActivity extends AppCompatActivity {
 
         //add colors to datasel
         ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.GRAY);
-        colors.add(Color.BLUE);
-        colors.add(Color.RED);
-        colors.add(Color.GREEN);
-        colors.add(Color.CYAN);
-        colors.add(Color.YELLOW);
-        colors.add(Color.MAGENTA);
+        colors.add(Color.rgb(255, 141, 51  ));
+        colors.add(Color.rgb(213, 159, 152   ));
+        colors.add(Color.rgb(13, 144, 179  ));
+        colors.add(Color.rgb(83, 13, 179  ));
+        colors.add(Color.rgb(179, 57, 46  ));
+        colors.add(Color.rgb(146, 179, 13  ));
+        colors.add(Color.rgb(179, 116, 13  ));
 
         pieDataSet.setColors(colors);
 
