@@ -22,8 +22,8 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".forgotten_passwordActivity" />
-        <activity android:name=".Activities.logoutActivity" />
-        <activity android:name=".Activities.transactionActivity"></activity>
+        <activity android:name=".NavigationDrawerActivities.logoutActivity" />
+        <activity android:name=".NavigationDrawerActivities.transactionActivity"></activity>
     </application>
 
 </manifest>

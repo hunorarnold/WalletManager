@@ -1,10 +1,10 @@
-package com.example.huni.walletmanager.Activities;
+package com.example.huni.walletmanager.NavigationDrawerActivities;
 
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.huni.walletmanager.R;
 import com.github.mikephil.charting.charts.PieChart;
@@ -20,9 +20,9 @@ import java.util.ArrayList;
 
 public class transactionActivity extends AppCompatActivity {
 
-    private static String TAG = "MainActivity";
+    private static String TAG = "transactionActivity";
 
-    private float[] yData = {25.3f, 10.6f, 66.76f, 44.32f, 46.0f, 23.9f, 16.89f};
+    private float[]yData = {25.3f, 10.25f, 66.90f, 44.15f, 46.50f, 23.99f, 14.01f};
     private String[] xData = {"General", "Housing", "Finance", "Transport", "Drinks", "Food", "Entertainment"};
     PieChart pieChart;
 
@@ -36,14 +36,17 @@ public class transactionActivity extends AppCompatActivity {
         pieChart = findViewById(R.id.idPieChart);
 
         pieChart.setDescription(null);
+        pieChart.setUsePercentValues(true);
         pieChart.setRotationEnabled(true);
-        pieChart.setHoleRadius(25f);
+        pieChart.setHoleRadius(15f);
         pieChart.setTransparentCircleAlpha(0);
-        pieChart.setCenterText("Monthly");
+        pieChart.setCenterText("Monthly expenses");
         pieChart.setCenterTextSize(10);
         pieChart.setDrawEntryLabels(true);
 
-        addDataSet(pieChart);
+
+
+        addDataSet();
 
         pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
@@ -53,6 +56,20 @@ public class transactionActivity extends AppCompatActivity {
                 Log.d(TAG, "onValueSelected: " + e.toString());
                 Log.d(TAG, "onValueSelected: " + h.toString());
 
+                int positionOne = e.toString().indexOf("y: ");
+                String money = e.toString().substring(positionOne + 3);
+
+                for(int i = 0; i < yData.length; i++){
+
+                    if(yData[i] == Float.parseFloat(money)){
+
+                        positionOne = i;
+                        break;
+                    }
+                }
+
+                String spending = xData[positionOne];
+                Toast.makeText(transactionActivity.this, spending + ": " + money + "$", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -62,7 +79,7 @@ public class transactionActivity extends AppCompatActivity {
         });
     }
 
-    private void addDataSet(PieChart chart){
+    private void addDataSet(){
 
         Log.d(TAG, "addDataSet started");
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
@@ -80,18 +97,18 @@ public class transactionActivity extends AppCompatActivity {
 
         //create data set
         PieDataSet pieDataSet = new PieDataSet(yEntrys, "What are you spending?");
-        pieDataSet.setSliceSpace(2);
+        //pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
 
         //add colors to datasel
         ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.GRAY);
-        colors.add(Color.BLUE);
-        colors.add(Color.RED);
-        colors.add(Color.GREEN);
-        colors.add(Color.CYAN);
-        colors.add(Color.YELLOW);
-        colors.add(Color.MAGENTA);
+        colors.add(Color.rgb(255, 141, 51  ));
+        colors.add(Color.rgb(213, 159, 152   ));
+        colors.add(Color.rgb(13, 144, 179  ));
+        colors.add(Color.rgb(83, 13, 179  ));
+        colors.add(Color.rgb(179, 57, 46  ));
+        colors.add(Color.rgb(146, 179, 13  ));
+        colors.add(Color.rgb(179, 116, 13  ));
 
         pieDataSet.setColors(colors);
 

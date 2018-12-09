@@ -14,9 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.huni.walletmanager.Activities.transactionActivity;
+import com.example.huni.walletmanager.NavigationDrawerActivities.transactionActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.example.huni.walletmanager.NavigationDrawerActivities.transactionActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
