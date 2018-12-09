@@ -23,23 +23,12 @@ public class MainActivity extends AppCompatActivity
 
     private Intent transactionIntent;
 
-    private FirebaseAuth firebaseAuth;
-
-    private TextView textViewEmail;//test
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //test
 
-        firebaseAuth = FirebaseAuth.getInstance();
-
-
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        textViewEmail=(TextView)findViewById(R.id.test_textView);
-        textViewEmail.setText("Welcome "+user.getEmail());
-        //test
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -117,11 +106,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    public void loadFragment(Fragment fragment) {
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_main, fragment, fragment.getClass().getSimpleName());
-        ft.commit();
-    }
+    
 }

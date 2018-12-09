@@ -40,23 +40,5 @@
         android:layout_height="match_parent">
     </FrameLayout>
 
-    <!--Login test-->
-    <TextView
-        android:id="@+id/test_textView"
-        android:layout_width="152dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="test"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="bottom|center"
-        app:layout_constraintBottom_toTopOf="@+id/email_editText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.design.widget.CoordinatorLayout>
