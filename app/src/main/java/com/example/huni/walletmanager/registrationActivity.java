@@ -99,6 +99,7 @@ public class registrationActivity extends AppCompatActivity implements View.OnCl
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
+                            finish();
                             startActivity(backToLogin);
                         } else {
                             Toast.makeText(registrationActivity.this, "Registration fail!",Toast.LENGTH_LONG).show();

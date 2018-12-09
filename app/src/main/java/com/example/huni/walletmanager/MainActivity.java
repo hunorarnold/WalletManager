@@ -12,18 +12,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.huni.walletmanager.Activities.transactionActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Intent transactionIntent;
 
+    private FirebaseAuth firebaseAuth;
+
+    private TextView textViewEmail;//test
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //test
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        textViewEmail=(TextView)findViewById(R.id.test_textView);
+        textViewEmail.setText("Welcome "+user.getEmail());
+        //test
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

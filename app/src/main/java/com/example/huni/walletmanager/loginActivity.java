@@ -1,56 +1,100 @@
 package com.example.huni.walletmanager;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-public class loginActivity extends AppCompatActivity {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
-    private Intent intentLogin, intentRegistration, intentForgottenPassword;
-    private Button buttonLogin, buttonRegistration, buttonForgottenPassword;
+public class loginActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private Button loginButton, registrationButton;
+    private EditText editTextEmail;
+    private TextInputEditText editTextPassword;
+
+    private FirebaseAuth firebaseAuth;
+
+    private Intent goToMain,intentRegistration;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        intentLogin = new Intent(loginActivity.this, MainActivity.class);
+        goToMain = new Intent(loginActivity.this, MainActivity.class);
         intentRegistration = new Intent(loginActivity.this, registrationActivity.class);
-        intentForgottenPassword = new Intent(loginActivity.this, forgotten_passwordActivity.class);
 
-        buttonLogin = findViewById(R.id.login_Button);
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                startActivity(intentLogin);
+        registrationButton = (Button)findViewById(R.id.registration_Button);
+        loginButton = (Button)findViewById(R.id.login_Button);
+        editTextEmail = (EditText) findViewById(R.id.email_editText);
+        editTextPassword = (TextInputEditText)findViewById(R.id.password_TextInputEdit);
 
-            }
-        });
 
-        buttonRegistration = findViewById(R.id.registration_Button);
+        loginButton.setOnClickListener(this);
+        registrationButton.setOnClickListener(this);
 
-        buttonRegistration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                startActivity(intentRegistration);
+    }
 
-            }
-        });
+    private void userLogin(){
+        String email = editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
 
-        buttonForgottenPassword = findViewById(R.id.forgotten_passwordButton);
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(this,"Please enter your e-mail!",Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        buttonForgottenPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(this,"Please enter a password!",Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-                startActivity(intentForgottenPassword);
+        firebaseAuth.signInWithEmailAndPassword(email,password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(loginActivity.this, "Log in successful!",Toast.LENGTH_LONG).show();
+                            try {
+                                Thread.sleep(1500);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            if(firebaseAuth.getCurrentUser() != null){
+                                finish();
+                                startActivity(goToMain);
+                            }
+                        } else {
+                            Toast.makeText(loginActivity.this, "Log in fail!",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+    }
 
-            }
-        });
+    @Override
+    public void onClick(View view) {
+        if(view == loginButton){
+           userLogin();
+        }
+        if(view == registrationButton){
+            startActivity(intentRegistration);
+        }
+
     }
 }
