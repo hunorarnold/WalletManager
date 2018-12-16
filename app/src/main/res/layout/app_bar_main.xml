@@ -22,8 +22,9 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/content_main"
-        android:layout_height="596dp" />
+        android:layout="@layout/content_main"
+        android:layout_height="596dp"
+        tools:ignore="IncludeLayoutParam" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -32,13 +33,13 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="#B22222"
-        app:srcCompat="@drawable/plus_circle_icon" />
+        app:srcCompat="@drawable/plus_circle_icon"
+        tools:ignore="VectorDrawableCompat" />
 
     <FrameLayout
         android:id="@+id/fragment_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
+        android:layout_height="wrap_content"></FrameLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>
