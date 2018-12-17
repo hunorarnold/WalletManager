@@ -72,7 +72,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                         if(task.isSuccessful()){
                             Toast.makeText(loginActivity.this, "Log in successful!",Toast.LENGTH_LONG).show();
                             try {
-                                Thread.sleep(1500);
+                                Thread.sleep(10);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
