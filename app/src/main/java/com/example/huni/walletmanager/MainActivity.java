@@ -34,24 +34,31 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //a floatingactionbutton osszecsatolon a koddal hogy lehesen ra tenni onclick listenert
+
         this.plussbutton = (FloatingActionButton) findViewById(R.id.fab);
+
         //rahejezem az onclik listenert a buttonre
+
         this.plussbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             /** onclick listener a floating buttonre ami elehozza a dialogus dobozt benne a plussmenuoption layouttal */
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(MainActivity.this);
                 dialog.setContentView(R.layout.plusbuttonmenuoption);
+
                 // rosszecsatolom a gombokat a dialogus dobozba levo elemekkel
+
                 Button calendarButton = dialog.findViewById(R.id.plusbuttonmenuoption_screen_button_calendar);
                 Button plussumButton = dialog.findViewById(R.id.plusbuttonmenuoption_screen_button_sum_plus);
                 Button minussumButton = dialog.findViewById(R.id.plusbuttonmenuoption_screen_button_sum_minus);
+
                 /** egyenkent rateszem a buttonkre a gombokra*/
+
                 calendarButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        System.out.println("Halenda");
                         Intent intent = new Intent(MainActivity.this,CalendarActivity.class);
                         startActivity(intent);
                         dialog.dismiss();
