@@ -4,61 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalendarActivity">
+    tools:context=".WalletManagerActivity">
 
-    <CalendarView
-        android:id="@+id/calendar_screen_calendarview"
+
+    <com.github.mikephil.charting.charts.PieChart
+
+        android:id="@+id/idPieChart"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/calendar_screen_edittex_sum_input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:gravity="center_vertical|center_horizontal"
-        android:hint="@string/activiy_calendar_screen_sum"
-        android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/calendar_screen_button_save_sum"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    </com.github.mikephil.charting.charts.PieChart>
 
     <Button
-        android:id="@+id/calendar_screen_button_save_sum"
+        android:id="@+id/walettmanager_screen_modifie_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="9dp"
         android:text="@string/activiy_calendar_screen_save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
+    <EditText
+        android:id="@+id/walletmanager_screen_edittext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="2dp"
+        android:ems="10"
         android:gravity="center_vertical|center_horizontal"
-        android:text="@string/activiy_calendar_screen_ossz"
+        android:hint="@string/wallet_manager_screen_nr"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/walettmanager_screen_modifie_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/wallet_manager_screen_ossz"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/calendar_screen_edittex_sum_input"
+        app:layout_constraintBottom_toTopOf="@+id/walletmanager_screen_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
