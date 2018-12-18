@@ -20,17 +20,14 @@
         android:id="@+id/nav_period"
         android:icon="@drawable/period"
         android:title="Period"/>
-
     <item
         android:id="@+id/nav_transaction"
         android:icon="@drawable/transaction"
         android:title="Transactions" />
-
     <item
         android:id="@+id/nav_summary"
         android:icon="@drawable/summary"
         android:title="Summary" />
-
     <item
         android:id="@+id/nav_logout"
         android:icon="@drawable/logout"

@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.huni.walletmanager.NavigationDrawerActivities.CurrencyPickerActivity;
 import com.example.huni.walletmanager.NavigationDrawerActivities.transactionActivity;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -39,7 +40,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Intent transactionIntent;
+    private Intent transactionIntent, currencyIntent;
     private FloatingActionButton plussbutton;
 
     private static String TAG = "MainActivity";
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         transactionIntent = new Intent(MainActivity.this, transactionActivity.class);
+        currencyIntent = new Intent(MainActivity.this, CurrencyPickerActivity.class);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -189,14 +191,16 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Handle navigation view item clicks here
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_languages) {
 
         } else if (id == R.id.nav_currency) {
+
+            startActivity(currencyIntent);
 
         } else if (id == R.id.nav_period) {
 

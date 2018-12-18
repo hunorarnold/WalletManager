@@ -24,7 +24,8 @@
         <activity android:name=".forgotten_passwordActivity" />
         <activity android:name=".NavigationDrawerActivities.logoutActivity" />
         <activity android:name=".NavigationDrawerActivities.transactionActivity" />
-        <activity android:name=".CalendarActivity"></activity>
+        <activity android:name=".CalendarActivity" />
+        <activity android:name=".NavigationDrawerActivities.CurrencyPickerActivity"></activity>
     </application>
 
 </manifest>
