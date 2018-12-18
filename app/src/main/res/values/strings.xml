@@ -7,7 +7,14 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="Logout">Settings</string>
-
+    <!--Calendar-->
+    <string name="activiy_calendar_screen_sum">10.50</string>
+    <string name="activiy_calendar_screen_save">Mentés</string>
+    <string name="activiy_calendar_screen_ossz">Osszeg</string>
+    <!--Plus button screen-->
+    <string name="plus_button_screen_calendar">Calendar</string>
+    <string name="plus_button_screen_plus">Plus</string>
+    <string name="plus_button_screen_minus">Minus</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
