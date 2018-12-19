@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,8 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.example.huni.walletmanager.NavigationDrawerActivities.transactionActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -53,6 +56,11 @@ public class MainActivity extends AppCompatActivity
     private String[] xData = {"General", "Housing", "Finance", "Transport", "Drinks", "Food", "Entertainment"};
     PieChart pieChart;
 
+    //realtime database
+    private DatabaseReference databaseReference;
+    private EditText editTextGeneral, editTextHousing;
+    private Button addButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +68,12 @@ public class MainActivity extends AppCompatActivity
 
         //firebase initializing
         firebaseAuth = FirebaseAuth.getInstance();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        editTextGeneral = (EditText)findViewById(R.id.email_editText) ;
+        editTextHousing = (EditText)findViewById(R.id.email2_editText);
+        addButton = (Button)findViewById(R.id.button3);
 
         //a floatingactionbutton osszecsatolon a koddal hogy lehesen ra tenni onclick listenert
 
@@ -135,53 +149,11 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
+    }
 
-        Log.d(TAG, "onCreate: starting to create chart");
+    private void addMoney(){
+        
 
-
-        pieChart = findViewById(R.id.idPieChart);
-
-        pieChart.setDescription(null);
-        pieChart.setUsePercentValues(true);
-        pieChart.setRotationEnabled(true);
-        pieChart.setHoleRadius(15f);
-        pieChart.setTransparentCircleAlpha(0);
-        pieChart.setCenterText("Monthly expenses");
-        pieChart.setCenterTextSize(10);
-        pieChart.setDrawEntryLabels(true);
-
-
-        addDataSet();
-
-        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-            @Override
-            public void onValueSelected(Entry e, Highlight h) {
-
-                Log.d(TAG, "onValueSelected: Value select from chart.");
-                Log.d(TAG, "onValueSelected: " + e.toString());
-                Log.d(TAG, "onValueSelected: " + h.toString());
-
-                int positionOne = e.toString().indexOf("y: ");
-                String money = e.toString().substring(positionOne + 3);
-
-                for(int i = 0; i < yData.length; i++){
-
-                    if(yData[i] == Float.parseFloat(money)){
-
-                        positionOne = i;
-                        break;
-                    }
-                }
-
-                String spending = xData[positionOne];
-                Toast.makeText(MainActivity.this, spending + ": " + money + "$", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onNothingSelected() {
-
-            }
-        });
     }
 
     @Override
@@ -253,53 +225,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void addDataSet(){
-
-        Log.d(TAG, "addDataSet started");
-        ArrayList<PieEntry> yEntrys = new ArrayList<>();
-        ArrayList<String> xEntrys = new ArrayList<>();
-
-        for(int i = 0; i < yData.length; i++){
-
-            yEntrys.add(new PieEntry(yData[i], i));
-        }
-
-        for(int i = 0; i < xData.length; i++){
-
-            xEntrys.add(xData[i]);
-        }
-
-        //create data set
-        PieDataSet pieDataSet = new PieDataSet(yEntrys, "What are you spending?");
-        //pieDataSet.setSliceSpace(2);
-        pieDataSet.setValueTextSize(12);
-
-        //add colors to datasel
-        ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.rgb(255, 141, 51  ));
-        colors.add(Color.rgb(213, 159, 152   ));
-        colors.add(Color.rgb(13, 144, 179  ));
-        colors.add(Color.rgb(83, 13, 179  ));
-        colors.add(Color.rgb(179, 57, 46  ));
-        colors.add(Color.rgb(146, 179, 13  ));
-        colors.add(Color.rgb(179, 116, 13  ));
-
-        pieDataSet.setColors(colors);
-
-        //add legend to chart
-
-        Legend legend = pieChart.getLegend();
-        legend.setForm(Legend.LegendForm.CIRCLE);
-        legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
-
-        //create pie data object
-
-        PieData pieData = new PieData(pieDataSet);
-        pieChart.setData(pieData);
-        pieChart.invalidate();
-
-
-    }
 
 }
 
