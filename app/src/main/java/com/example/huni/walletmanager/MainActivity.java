@@ -39,6 +39,10 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    //log out and firebase declaration
+    private Intent intentLogIn;
+    private FirebaseAuth firebaseAuth;
+
     private Intent transactionIntent;
     private FloatingActionButton plussbutton;
 
@@ -52,6 +56,9 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //firebase initializing
+        firebaseAuth = FirebaseAuth.getInstance();
 
         //a floatingactionbutton osszecsatolon a koddal hogy lehesen ra tenni onclick listenert
 
@@ -113,6 +120,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         transactionIntent = new Intent(MainActivity.this, transactionActivity.class);
+        //back to log in section after you loged out
+        intentLogIn = new Intent(MainActivity.this, loginActivity.class);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -226,6 +235,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_summary) {
 
         } else if (id == R.id.nav_logout) {
+            //firebase logout
+            Toast.makeText(MainActivity.this, "You logged out!",Toast.LENGTH_LONG).show();
+            firebaseAuth.signOut();
+            finish();
+            startActivity(intentLogIn);
 
         }
 
