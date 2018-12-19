@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.huni.walletmanager.NavigationDrawerActivities.CurrencyPickerActivity;
 import com.example.huni.walletmanager.NavigationDrawerActivities.transactionActivity;
+import com.example.huni.walletmanager.NavigationDrawerActivities.user_detailsActivity;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
@@ -43,7 +44,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Intent transactionIntent;
+    private Intent transactionIntent, detailsIntent;
     //log out and firebase declaration
     private Intent intentLogIn;
     private FirebaseAuth firebaseAuth;
@@ -69,11 +70,13 @@ public class MainActivity extends AppCompatActivity
         //firebase initializing
         firebaseAuth = FirebaseAuth.getInstance();
 
+
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
         editTextGeneral = (EditText)findViewById(R.id.email_editText) ;
         editTextHousing = (EditText)findViewById(R.id.email2_editText);
         addButton = (Button)findViewById(R.id.button3);
+
 
         //a floatingactionbutton osszecsatolon a koddal hogy lehesen ra tenni onclick listenert
 
@@ -135,6 +138,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         transactionIntent = new Intent(MainActivity.this, transactionActivity.class);
+        detailsIntent = new Intent(MainActivity.this, user_detailsActivity.class);
 
         //back to log in section after you loged out
         intentLogIn = new Intent(MainActivity.this, loginActivity.class);
@@ -151,10 +155,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void addMoney(){
-        
 
-    }
 
     @Override
     public void onBackPressed() {
@@ -195,6 +196,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
+
+            startActivity(detailsIntent);
 
         } else if (id == R.id.nav_languages) {
 
