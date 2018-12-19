@@ -152,6 +152,28 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                UserCosts();
+
+            }
+        });
+
+
+    }
+
+    public void UserCosts(){
+        String general = editTextGeneral.getText().toString().trim();
+        String housing = editTextHousing.getText().toString().trim();
+
+        Costs costs = new Costs(general,housing);
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        databaseReference.child(user.getUid()).setValue(costs);
+
 
     }
 
