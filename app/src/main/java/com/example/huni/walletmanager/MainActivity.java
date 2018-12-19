@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity
     private EditText editTextGeneral, editTextHousing;
     private Button addButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +74,8 @@ public class MainActivity extends AppCompatActivity
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        editTextGeneral = (EditText)findViewById(R.id.email_editText) ;
-        editTextHousing = (EditText)findViewById(R.id.email2_editText);
+        editTextGeneral = (EditText)findViewById(R.id.General_editText) ;
+        editTextHousing = (EditText)findViewById(R.id.Housing_editText);
         //addButton = (Button)findViewById(R.id.button3);
 
 
@@ -110,13 +111,9 @@ public class MainActivity extends AppCompatActivity
                 plussumButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        System.out.println("minus");
-                        Intent intent= new Intent(MainActivity.this,WalletManagerActivity.class);
-                        intent.putExtra("milyen muvelet","plusz");
-                        intent.putExtra("adatok",MainActivity.this.yData);
-                        intent.putExtra("szavak",MainActivity.this.xData);
-                        startActivityForResult(intent,0);
-                        dialog.dismiss();
+                        //System.out.println("minus");
+                        UserCosts();
+                        //dialog.dismiss();
                     }
                 });
                 minussumButton.setOnClickListener(new View.OnClickListener() {
@@ -152,14 +149,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                UserCosts();
-
-            }
-        });
 
 
     }
