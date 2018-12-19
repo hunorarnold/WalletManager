@@ -15,6 +15,10 @@
     <string name="plus_button_screen_calendar">Calendar</string>
     <string name="plus_button_screen_plus">Plus</string>
     <string name="plus_button_screen_minus">Minus</string>
+    <!--Wallet manager screen-->
+    <string name="wallet_manager_screen_save">Mentes</string>
+    <string name="wallet_manager_screen_nr">18.89</string>
+    <string name="wallet_manager_screen_ossz">Osszeg</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

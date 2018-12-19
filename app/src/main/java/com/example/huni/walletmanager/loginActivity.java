@@ -18,13 +18,13 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class loginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button loginButton, registrationButton;
+    private Button loginButton, registrationButton,forgotPasswordButton;
     private EditText editTextEmail;
     private TextInputEditText editTextPassword;
 
     private FirebaseAuth firebaseAuth;
 
-    private Intent goToMain,intentRegistration;
+    private Intent goToMain,intentRegistration,intentForgotPassword;
 
 
 
@@ -35,6 +35,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
         goToMain = new Intent(loginActivity.this, MainActivity.class);
         intentRegistration = new Intent(loginActivity.this, registrationActivity.class);
+        intentForgotPassword = new Intent(loginActivity.this, forgotten_passwordActivity.class);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -43,10 +44,12 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         loginButton = (Button)findViewById(R.id.login_Button);
         editTextEmail = (EditText) findViewById(R.id.email_editText);
         editTextPassword = (TextInputEditText)findViewById(R.id.password_TextInputEdit);
+        forgotPasswordButton = (Button)findViewById(R.id.forgotten_passwordButton);
 
 
         loginButton.setOnClickListener(this);
         registrationButton.setOnClickListener(this);
+        forgotPasswordButton.setOnClickListener(this);
 
 
     }
@@ -94,6 +97,9 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         }
         if(view == registrationButton){
             startActivity(intentRegistration);
+        }
+        if(view == forgotPasswordButton){
+            startActivity(intentForgotPassword);
         }
 
     }

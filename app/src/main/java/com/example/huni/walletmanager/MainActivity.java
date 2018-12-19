@@ -40,7 +40,11 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Intent transactionIntent, currencyIntent;
+    private Intent transactionIntent;
+    //log out and firebase declaration
+    private Intent intentLogIn;
+    private FirebaseAuth firebaseAuth;
+
     private FloatingActionButton plussbutton;
 
     private static String TAG = "MainActivity";
@@ -53,24 +57,34 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //firebase initializing
+        firebaseAuth = FirebaseAuth.getInstance();
+
         //a floatingactionbutton osszecsatolon a koddal hogy lehesen ra tenni onclick listenert
+
         this.plussbutton = (FloatingActionButton) findViewById(R.id.fab);
+
         //rahejezem az onclik listenert a buttonre
+
         this.plussbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             /** onclick listener a floating buttonre ami elehozza a dialogus dobozt benne a plussmenuoption layouttal */
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(MainActivity.this);
                 dialog.setContentView(R.layout.plusbuttonmenuoption);
+
                 // rosszecsatolom a gombokat a dialogus dobozba levo elemekkel
+
                 Button calendarButton = dialog.findViewById(R.id.plusbuttonmenuoption_screen_button_calendar);
                 Button plussumButton = dialog.findViewById(R.id.plusbuttonmenuoption_screen_button_sum_plus);
                 Button minussumButton = dialog.findViewById(R.id.plusbuttonmenuoption_screen_button_sum_minus);
+
                 /** egyenkent rateszem a buttonkre a gombokra*/
+
                 calendarButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        System.out.println("Halenda");
                         Intent intent = new Intent(MainActivity.this,CalendarActivity.class);
                         startActivity(intent);
                         dialog.dismiss();
@@ -80,12 +94,24 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onClick(View v) {
                         System.out.println("minus");
+                        Intent intent= new Intent(MainActivity.this,WalletManagerActivity.class);
+                        intent.putExtra("milyen muvelet","plusz");
+                        intent.putExtra("adatok",MainActivity.this.yData);
+                        intent.putExtra("szavak",MainActivity.this.xData);
+                        startActivityForResult(intent,0);
+                        dialog.dismiss();
                     }
                 });
                 minussumButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         System.out.println("plus");
+                        Intent intent= new Intent(MainActivity.this,WalletManagerActivity.class);
+                        intent.putExtra("milyen muvelet","minusz");
+                        intent.putExtra("adatok",MainActivity.this.yData);
+                        intent.putExtra("szavak",MainActivity.this.xData);
+                        startActivityForResult(intent,0);
+                        dialog.dismiss();
                     }
                 });
                 dialog.show();
@@ -95,7 +121,9 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         transactionIntent = new Intent(MainActivity.this, transactionActivity.class);
-        currencyIntent = new Intent(MainActivity.this, CurrencyPickerActivity.class);
+
+        //back to log in section after you loged out
+        intentLogIn = new Intent(MainActivity.this, loginActivity.class);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -110,6 +138,7 @@ public class MainActivity extends AppCompatActivity
 
         Log.d(TAG, "onCreate: starting to create chart");
 
+
         pieChart = findViewById(R.id.idPieChart);
 
         pieChart.setDescription(null);
@@ -120,7 +149,6 @@ public class MainActivity extends AppCompatActivity
         pieChart.setCenterText("Monthly expenses");
         pieChart.setCenterTextSize(10);
         pieChart.setDrawEntryLabels(true);
-
 
 
         addDataSet();
@@ -200,7 +228,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_currency) {
 
-            startActivity(currencyIntent);
+            //startActivity(currencyIntent);
 
         } else if (id == R.id.nav_period) {
 
@@ -211,6 +239,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_summary) {
 
         } else if (id == R.id.nav_logout) {
+            //firebase logout
+            Toast.makeText(MainActivity.this, "You logged out!",Toast.LENGTH_LONG).show();
+            firebaseAuth.signOut();
+            finish();
+            startActivity(intentLogIn);
 
         }
 

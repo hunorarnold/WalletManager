@@ -25,7 +25,8 @@
         <activity android:name=".NavigationDrawerActivities.logoutActivity" />
         <activity android:name=".NavigationDrawerActivities.transactionActivity" />
         <activity android:name=".CalendarActivity" />
-        <activity android:name=".NavigationDrawerActivities.CurrencyPickerActivity"></activity>
+        <activity android:name=".WalletManagerActivity"></activity>
+
     </application>
 
 </manifest>
