@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity
 
         editTextGeneral = (EditText)findViewById(R.id.email_editText) ;
         editTextHousing = (EditText)findViewById(R.id.email2_editText);
-        addButton = (Button)findViewById(R.id.button3);
+        //addButton = (Button)findViewById(R.id.button3);
 
 
         //a floatingactionbutton osszecsatolon a koddal hogy lehesen ra tenni onclick listenert
