@@ -36,6 +36,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.example.huni.walletmanager.NavigationDrawerActivities.transactionActivity;
+import com.google.firebase.components.ComponentRuntime;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity
 
     private static String TAG = "MainActivity";
 
-    private float[]yData = {25.3f, 10.25f, 66.90f, 44.15f, 46.50f, 23.99f, 14.01f};
+    private float[]yData = {2.0f, 1.0f, 7.0f, 5.0f, 6.0f, 9.0f, 23.0f};
     private String[] xData = {"General", "Housing", "Finance", "Transport", "Drinks", "Food", "Entertainment"};
     PieChart pieChart;
 
@@ -62,7 +63,6 @@ public class MainActivity extends AppCompatActivity
     private EditText editTextSalary, editTextGeneral, editTextHousing, editTextEntertainment;
     private EditText editTextFinance, editTextTransport, editTextDrinks, editTextFood;
     private TextView textViewRemaining;
-    private Button addButton;
 
 
     @Override
@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity
         String food = editTextFood.getText().toString().trim();
         String drinks = editTextDrinks.getText().toString().trim();
         String entertainment = editTextEntertainment.getText().toString().trim();
+
 
         Costs costs = new Costs(salary, remaining_money, general, housing, finance, transport, drinks, food, entertainment);
 
