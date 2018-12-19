@@ -27,7 +27,7 @@ public class WalletManagerActivity extends AppCompatActivity {
 
 
 
-    private float[]yData = {25.3f, 10.25f, 66.90f, 44.15f, 46.50f, 23.99f, 14.01f};
+    private float[]yData = {2.0f, 1.0f, 7.0f, 5.0f, 6.0f, 9.0f, 23.0f};
     private String[] xData = {"General", "Housing", "Finance", "Transport", "Drinks", "Food", "Entertainment"};
     PieChart pieChart;
     private Entry e;
