@@ -59,7 +59,9 @@ public class MainActivity extends AppCompatActivity
 
     //realtime database
     private DatabaseReference databaseReference;
-    private EditText editTextGeneral, editTextHousing;
+    private EditText editTextSalary, editTextGeneral, editTextHousing, editTextEntertainment;
+    private EditText editTextFinance, editTextTransport, editTextDrinks, editTextFood;
+    private TextView textViewRemaining;
     private Button addButton;
 
 
@@ -74,8 +76,16 @@ public class MainActivity extends AppCompatActivity
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        editTextGeneral = (EditText)findViewById(R.id.General_editText) ;
+        editTextSalary = (EditText)findViewById(R.id.Salary_editText);
+        textViewRemaining = (TextView)findViewById(R.id.Remaning_money_textView);
+        editTextGeneral = (EditText)findViewById(R.id.General_editText);
         editTextHousing = (EditText)findViewById(R.id.Housing_editText);
+        editTextFinance = (EditText)findViewById(R.id.Finance_editText);
+        editTextTransport = (EditText)findViewById(R.id.Transport_editText);
+        editTextFood = (EditText)findViewById(R.id.Food_editText);
+        editTextDrinks = (EditText)findViewById(R.id.Drinks_editText);
+        editTextEntertainment = (EditText)findViewById(R.id.Entertainment_editText);
+
         //addButton = (Button)findViewById(R.id.button3);
 
 
@@ -155,10 +165,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void UserCosts(){
+        String salary = editTextSalary.getText().toString().trim();
+        String remaining_money = textViewRemaining.getText().toString().trim();
         String general = editTextGeneral.getText().toString().trim();
         String housing = editTextHousing.getText().toString().trim();
+        String finance = editTextFinance.getText().toString().trim();
+        String transport = editTextTransport.getText().toString().trim();
+        String food = editTextFood.getText().toString().trim();
+        String drinks = editTextDrinks.getText().toString().trim();
+        String entertainment = editTextEntertainment.getText().toString().trim();
 
-        Costs costs = new Costs(general,housing);
+        Costs costs = new Costs(salary, remaining_money, general, housing, finance, transport, drinks, food, entertainment);
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
