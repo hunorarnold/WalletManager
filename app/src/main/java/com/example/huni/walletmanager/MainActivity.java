@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity
         //firebase initializing
         firebaseAuth = FirebaseAuth.getInstance();
 
+        FirebaseUser user = firebaseAuth.getCurrentUser();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
